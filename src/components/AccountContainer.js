@@ -65,9 +65,6 @@ class AccountContainer extends Component {
 
   render() {
     const displayedTransactions = this.state.transactions
-    // state.activeCategory is logging correct category when clicked...
-    // handleChangeshould is probably correct...
-    console.log("state.activeCategory:", this.state.activeCategory)
 
     return (
       <div className="ui grid container">
