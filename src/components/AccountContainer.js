@@ -42,12 +42,32 @@ class AccountContainer extends Component {
     }
   }
 
+  fetchTransactions() {
+    const url = "https://boiling-brook-94902.herokuapp.com/transactions"
+    fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          transactions: json
+        })
+      })
+  }
+
+  componentDidMount() {
+    this.fetchTransactions()
+  }
+
   handleChange(event) {
-    //... your code here
+    this.setState({
+      activeCategory: event.target.value
+    })
   }
 
   render() {
     const displayedTransactions = this.state.transactions
+    // state.activeCategory is logging correct category when clicked...
+    // handleChangeshould is probably correct...
+    console.log("state.activeCategory:", this.state.activeCategory)
 
     return (
       <div className="ui grid container">
@@ -55,11 +75,12 @@ class AccountContainer extends Component {
         <CategorySelector
           transactions={ displayedTransactions }
           activeCategory={ this.state.activeCategory }
-          handleChange={ "...your code here" }
+          handleChange={ this.handleChange.bind(this) }
         />
 
         <TransactionsList
           transactions={ displayedTransactions }
+          activeCategory={this.state.activeCategory}
         />
 
       </div>
