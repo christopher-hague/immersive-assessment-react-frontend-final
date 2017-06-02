@@ -4,7 +4,6 @@ import Transaction from './Transaction'
 const TransactionsList = (props) => {
 
   const filteredTransactions = props.transactions.filter(transaction => transaction.category === props.activeCategory)
-  // const allTransactions = props.transactions
 
   return (
     <table className="ui celled striped padded table">
